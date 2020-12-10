@@ -12,5 +12,6 @@ package com.example.livedatabusdemo;
  * * linchaoyue 2020/12/7    1.0         create
  ******************************************************************/
 public class BusCon {
-    public static final String KEY_TEST="key_test11";
+    public static final String KEY_TEST="key_test";
+    public static final String KEY_TEST11="key_test11";
 }

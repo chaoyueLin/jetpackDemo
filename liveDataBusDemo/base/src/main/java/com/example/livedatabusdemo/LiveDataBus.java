@@ -1,5 +1,7 @@
 package com.example.livedatabusdemo;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LifecycleOwner;
@@ -70,9 +72,19 @@ public final class LiveDataBus {
         private boolean isCallOnObserve() {
             StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
             if (stackTrace != null && stackTrace.length > 0) {
+                for (int i = 0; i < stackTrace.length; i++) {
+                    StringBuilder stringBuilder = new StringBuilder("    ");
+                    stringBuilder.append(stackTrace[i].getClassName() + ".")
+                            .append(stackTrace[i].getMethodName() + "(")
+                            .append(stackTrace[i].getFileName() + ":")
+                            .append(stackTrace[i].getLineNumber() + ")");
+                    Log.e("albertThreadDebug", stringBuilder.toString());
+                }
                 for (StackTraceElement element : stackTrace) {
-                    if ("android.arch.lifecycle.LiveData".equals(element.getClassName()) &&
+                    if ("androidx.lifecycle.LiveData".equals(element.getClassName()) &&
                             "observeForever".equals(element.getMethodName())) {
+                        Log.e("albertThreadDebug", "true...........");
+
                         return true;
                     }
                 }

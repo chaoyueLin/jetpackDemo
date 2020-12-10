@@ -50,6 +50,20 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        findViewById(R.id.button3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LiveDataBus.get().with(BusCon.KEY_TEST11).setValue(false);
+            }
+        });
+
+        findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,ThirdActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
     }
 
     public void setValue(boolean value) {
